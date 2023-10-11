@@ -1,0 +1,46 @@
+/* topページ
+共通
+----------------------------------------*/
+@use "../../global" as g;
+
+.p-home {
+	&__img {
+		img {
+			display: block;
+		}
+		figcaption {
+			margin-top: 1rem;
+			p {
+				font-size: 1.3rem;
+			}
+		}
+	}
+	&__buy {
+		margin: 0 !important;
+		position: fixed;
+		right: 4rem;
+		bottom: 4rem;
+		z-index: 2;
+		text-align: center;
+		transition: all 0.5s ease-out;
+		opacity: 0;
+		@include g.mq-down(lg) {
+			width: 15%;
+			right: 2rem;
+			bottom: 2rem;
+		}
+		@include g.mq-down() {
+			width: 100%;
+			right: 0;
+			bottom: 10px;
+		}
+		&[data-inview="true"] {
+			opacity: 1;
+		}
+		img {
+			@include g.mq-down() {
+				width: 29.7rem;
+			}
+		}
+	}
+}

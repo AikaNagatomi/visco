@@ -1,0 +1,273 @@
+/* レイアウト
+l-header
+----------------------------------------*/
+@use "../global" as g;
+
+.l-header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: 3rem;
+	padding-left: 3rem;
+	z-index: 10;
+	height: 8rem;
+	transition: 0.3s;
+
+	@include g.mq-down(xl) {
+		padding: 1.7rem 2rem;
+	}
+
+	// &.hovered {
+	// 	background: g.$white;
+	// }
+
+	&__title {
+		width: 11rem;
+		padding-right: 0;
+		padding-left: 0;
+		padding-top: 2.7rem;
+		padding-bottom: .7rem;
+
+		a {
+			display: flex;
+			align-items: center;
+		}
+
+		@include g.mq-down(xl) {
+			width: 7.8rem;
+			padding: 0;
+
+			a {
+				line-height: 1;
+				display: block;
+			}
+		}
+	}
+
+	&__btn {
+		display: none;
+		@include g.mq-down(xl) {
+			display: block;
+			width: 4.6rem;
+			height: 3.6rem;
+			position: fixed;
+			top: 2rem;
+			right: 2rem;
+			color: g.$white;
+			z-index: 101;
+			overflow: hidden;
+			cursor: pointer;
+		}
+
+		&::before {
+			transition: all 0.3s ease-out;
+			content: "MENU";
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: g.$white;
+			font-family: g.$font-family-english;
+			font-size: 1.6rem;
+			font-weight: bold;
+		}
+		
+		.line {
+			display: block;
+			width: 4.6rem;
+			height: 1rem;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			transition: all 0.3s ease-out;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 4.6rem;
+				height: .1rem;
+				background: g.$white;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transition: all 0.3s ease-out;
+			}
+			&::after {
+				content: "";
+				display: block;
+				width: 4.6rem;
+				height: .1rem;
+				background: g.$white;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				transition: all 0.3s ease-out;
+			}
+		}
+		&.nav-open {
+			&::before {
+				content: "CLOSE";
+			}
+
+			.line {
+				&::before {
+					opacity: 0;
+				}
+				&::after {
+					transform: rotate(-10deg);
+  					bottom: .5rem;
+				}
+			}
+		}
+	}
+	&__navi {
+		transition: all 0.3s ease-out;
+		flex: 1;
+
+		@include g.mq-down(xl) {
+			display: block;
+			width: 100vw;
+			height: 100vh;
+			padding: 13.4rem 4rem 4rem;
+			position: fixed;
+			top: 0;
+			right: -100vw;
+			overflow-y: auto;
+			background: g.$bg-secondary-color;
+			z-index: 100;
+			box-sizing: border-box;
+			overflow-x: hidden;
+
+			&.nav-open {
+				right: 0;
+			}
+		}
+
+		&-list {
+			max-width: 100%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			@include g.mq-down(xl) {
+				flex-direction: column;
+				display: block;
+			}
+			
+			&-item {
+				margin: 0 1.5rem;
+				position: relative;
+
+				@include g.mq-down(xl) {
+					margin: 0 0 2.5rem;
+				}
+
+				@include g.mq-up(xl) {
+					&:hover {
+						.l-header__navi-list-child {
+							display: grid;
+							column-gap: 6.8rem;
+						}
+					}
+				}
+				&.contact {
+					@include g.mq-down(xl) {
+						display: inline-block;
+						margin-right: 3rem;
+					}
+
+					.l-header__navi-list-link {
+						background: g.$white;
+						color: g.$black;
+						width: 8.6rem;
+						padding: .8rem 0 .7rem;
+						border-radius: 2.4rem;
+						text-align: center;
+					}
+					
+
+					&:last-child {
+						margin: 0;
+					}
+				}
+			}
+
+			&-link {
+				//height: 8rem;
+				position: relative;
+				//padding: 1.3rem 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 1.4rem;
+				font-weight: 500;
+				font-family: g.$font-family-english;
+				letter-spacing: 0.025em;
+				line-height: g.$en-line-height;
+				text-align: center;
+				white-space: nowrap;
+				color: g.$white;
+
+				@include g.mq-down(xl) {
+					height: auto;
+					text-align: left;
+					display: inline-block;
+					box-sizing: border-box;
+					font-size: 1.6rem;
+					font-weight: bold;
+				}
+			}
+
+			//入れ子
+			&-child {
+				display: none;
+				position: absolute;
+				top: 0;
+				font-size: 1.6rem;
+				padding-top: 2.5rem;
+				padding-bottom: 0;
+				width: 4.7rem;
+
+				@include g.mq-down(xl) {
+					position: relative;
+					top: 0;
+					background: none;
+					box-shadow: none;
+					padding: 0 0 0 1.6rem;
+					overflow: hidden;
+				}
+
+				&-item {
+					margin-bottom: 1rem;
+
+					@include g.mq-down(xl) {
+						display: block;
+					}
+
+					.l-header__navi-list-link {
+						height: auto;
+
+						@include g.mq-down(xl) {
+							font-size: 1.4rem;
+							font-weight: normal;
+						}
+					}
+				}
+			}
+
+
+		}
+	}
+	
+
+	@include g.mq-down(xl) {
+		&.overlay {
+			&::before {
+				display: none;
+			}
+		}
+	}
+}

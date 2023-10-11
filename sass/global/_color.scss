@@ -1,0 +1,33 @@
+/* color
+----------------------------------------*/
+
+$white:    #fff !default;
+$black:    #000 !default;
+$black2:    #333 !default;
+
+// サイトで最も明るい色
+$lightest-color: $white !default;
+$lightest-color-01: #F0F3F5;
+$lightest-color-02: #CDD6DD;
+$lightest-color-03: #98A6B5;
+
+// サイトで最も暗い色
+$darkest-color: $black !default;
+
+// メインカラー
+$primary-color: #D2271A !default;
+
+// body背景カラー
+$bg-body-color: $white !default;
+$bg-secondary-color: $black !default;
+
+// 標準のテキストの色
+$font-primary-color: #3B4043;
+
+// ラインのカラー
+$line-color: #ced4da !default;
+
+// その他カラー
+$secondary-color: #695238 !default;
+$notice-color: #9F0000 !default;
+$grey-color: #707F89 !default;

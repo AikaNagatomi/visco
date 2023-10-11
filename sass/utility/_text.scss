@@ -1,0 +1,55 @@
+
+/* 文字の汎用クラス
+----------------------------------------*/
+@use "../global" as g;
+
+.text-en {
+  font-family: g.$font-family-english;
+}
+
+.text-danger {
+  color: g.$notice-color;
+}
+
+.text-primary {
+  color: g.$primary-color;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-l {
+  font-size: 1.68em;
+}
+
+.text-s {
+  font-size: 13px;
+  @include g.mq-down() {
+    font-size: 11px;
+  }
+}
+
+.text-marker {
+  @include g.marker(g.$primary-color);
+}
+
+.text-left {
+	text-align: left !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
+.align-middle {
+  text-align: middle;
+}
+
+.align-bottom {
+  text-align: bottom;
+}

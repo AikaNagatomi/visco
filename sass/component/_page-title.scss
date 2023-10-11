@@ -1,0 +1,46 @@
+/* コンポーネント
+c-page-title
+----------------------------------------*/
+@use "../global" as g;
+
+.c-page-title {
+	background: url(../img/common/bg-ttl.png) no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	padding: 11.4rem 0 7.5rem;
+
+	@include g.mq-down() {
+		padding: 5.8rem 0 5.5rem;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: rgba(0,0,0,.25);
+	}
+
+	&__main {
+		@include g.section-width();
+		color: g.$white;
+		margin-bottom: 0 !important;
+		font-family: 'League Gothic', sans-serif;
+		font-size: 7.5rem;
+		font-weight: bold;
+		letter-spacing: 0.025em;;
+		line-height: 1.5;
+
+		@include g.mq-down() {
+			font-size: 2.8rem;
+		}
+	}
+
+	&.title-none {
+		background: none;
+		padding: 3.3rem 0;
+	}
+}

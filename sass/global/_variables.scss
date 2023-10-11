@@ -1,0 +1,40 @@
+/* 変数
+----------------------------------------*/
+// ページのコンテナサイズ
+$page-base-width: 94%;
+$page-base-width-sm: 90%;
+// ページのコンテナmax-widthサイズ
+$page-base-max-width: 94%;
+$page-base-max-width-sm: 90%;
+
+// 汎用space
+$spacer: 18px !default;
+$spacers: (
+  0: 0,
+  //1: math.div($spacer , 4),
+  //2: math.div($spacer , 2),
+	1: calc($spacer / 4),
+  2: calc($spacer / 2),
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+	6: $spacer * 4,
+	7: $spacer * 5,
+);
+
+$sp-spacer: 12px !default;
+$sp-spacers: (
+  0: 0,
+  //1: math.div($sp-spacer , 4),
+  //2: math.div($sp-spacer , 2),
+	1: calc($sp-spacer / 4),
+  2: calc($sp-spacer / 2),
+  3: $sp-spacer,
+  4: $sp-spacer * 1.5,
+  5: $sp-spacer * 3,
+	6: $sp-spacer * 4,
+	7: $sp-spacer * 5,
+);
+
+// ドロップシャドウ
+$card-shadow: 0 3px 6px rgba(0, 0, 0, .16)!default;

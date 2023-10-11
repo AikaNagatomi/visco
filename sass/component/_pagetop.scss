@@ -1,0 +1,37 @@
+/* コンポーネント
+c-pagetop
+----------------------------------------*/
+@use "../global" as g;
+
+.c-pagetop {
+	position: fixed;
+	right: 2.0rem;
+	bottom: 0;
+	margin-top: 0;
+	z-index: 10;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 2.0rem;
+	text-align: center;
+	line-height: 0;
+    margin-top: 2.0rem;
+
+    img {
+        width: 2rem;
+    }
+
+	@include g.mq-down(xl) {
+        position: relative !important;
+        padding: 2rem 0 0;
+        background: #DEDCD7;
+        width: 100%;
+        max-width: inherit;
+        margin: 0;
+        right: 0;
+
+        img {
+            width: 4.7rem;
+        }
+	}
+
+}

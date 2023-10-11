@@ -1,0 +1,58 @@
+/* コンポーネント
+c-breadcrumb
+----------------------------------------*/
+@use "../global" as g;
+
+.c-breadcrumb {
+	position: absolute;
+	top: 1.5rem;
+	left: 3rem;
+
+	@include g.mq-down() {
+		top: 2rem;
+		left: 2rem;
+		width: 100%;
+	}
+
+	ul {
+		display: flex;
+
+		@include g.mq-down {
+			overflow-x: auto;
+			white-space: nowrap;
+		}
+
+		li {
+			color: #555;
+			font-size: 1.2rem;
+			margin-right: 2.4rem;
+
+			@include g.mq-down() {
+				font-size: 1rem;
+				margin-right: 2.4rem;
+			}
+
+			a {
+				&::after {
+					content: "";
+					position: absolute;
+					display: inline-block;
+					right: -1.5rem;
+					width: 0.7rem;
+					height: 0.7rem;
+					border-top: 0.1rem solid #555;
+					border-right: 0.1rem solid #555;
+					transform: rotate(45deg);
+					top: 0.3rem;
+				}
+			}
+		}
+	}
+
+	&.-no-title {
+		position: static;
+		padding-left: 3rem;
+		padding-top: 1.5rem;
+		padding-bottom: 1.7rem;
+	}
+}

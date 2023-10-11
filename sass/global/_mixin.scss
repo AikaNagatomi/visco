@@ -1,0 +1,157 @@
+/* 関数
+----------------------------------------*/
+@use "variables" as v;
+@use "color" as c;
+@use "font" as f;
+@use "breakpoint" as b;
+
+// ブレークポイントのmixinの定義
+// min-width
+@mixin mq-up($breakpoint: md) {
+	@media #{map-get(b.$breakpoint-up, $breakpoint)} {
+		@content;
+	}
+}
+// max-width
+@mixin mq-down($breakpoint: md) {
+	@media #{map-get(b.$breakpoint-down, $breakpoint)} {
+		@content;
+	}
+}
+// min-width and max-width
+@mixin mq-and($breakpoint: md) {
+	@media #{map-get(b.$breakpoint-and, $breakpoint)} {
+		@content;
+	}
+}
+
+// 基本のコンテンツ幅
+@mixin section-width() {
+	margin: 0 auto;
+	width: v.$page-base-width;
+	max-width: 1000px;
+
+	@include mq-down() {
+		max-width: v.$page-base-max-width-sm;
+	}
+}
+
+// マーカー
+@mixin marker($color: c.$primary-color) {
+	background: linear-gradient(transparent 70%, $color 70%);
+}
+
+// よく使うグラデーション
+@mixin gradation-main {
+	background: rgb(61, 132, 213);
+	background: linear-gradient(
+		30deg,
+		rgba(61, 132, 213, 1) 0%,
+		rgba(21, 87, 162, 1) 100%
+	);
+}
+
+// ボタンのリセット
+@mixin button-base($size: m) {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	text-decoration: none !important;
+	appearance: none;
+	transition: 300ms;
+	outline: none;
+	font-family: inherit;
+	letter-spacing: f.$base-letter-space;
+	font-weight: 400;
+	line-height: 1;
+	cursor: pointer;
+	border-radius: 5px;
+
+	//small
+	@if ($size == s) {
+		padding: 0 8px;
+		height: 3.2rem;
+		min-width: 19rem;
+		font-size: 1.3rem;
+
+		@include mq-down() {
+			padding: 0 0.6rem;
+			font-size: 1.2rem;
+		}
+	}
+
+	//defalt
+	@if ($size == m) {
+		padding: 0;
+		height: 5.4rem;
+		min-width: 23.1rem;
+		border-radius: 2.7rem;
+
+		@include mq-down() {
+			min-width: unset;
+			max-width: 100%;
+			width: 29.5rem;
+			height: 5.4rem;
+		}
+	}
+}
+
+// 各sectionのpaddingを統一したい時
+
+@mixin section-padding(
+	$isFist: 0,
+	$pc-section-padding:  map-get(v.$spacers, 4),
+	$sp-section-padding:  map-get(v.$sp-spacers, 4),
+) {
+	// 引数に1を入れると下paddingのみ
+	@if ($isFist == 1) {
+		padding-bottom: $pc-section-padding;
+		@include mq-down() {
+			padding-bottom: $sp-section-padding;
+		}
+	}
+
+	// 上下paddin付き下が少し大きい
+	@else if ($isFist == 2) {
+		padding-top: calc($pc-section-padding * 2.3);
+		padding-bottom: calc($pc-section-padding * 4.7);
+		@include mq-down() {
+			padding-top: calc($sp-section-padding * 2.3);
+			padding-bottom: calc($sp-section-padding * 4.7);
+		}
+	}
+
+	// 上paddingのみ
+	@else if ($isFist == 3) {
+		padding-top: $pc-section-padding;
+		@include mq-down() {
+			padding-top: $sp-section-padding;
+		}
+	}
+
+	// 上下同じpadding
+	@else {
+		padding-top: $pc-section-padding;
+		padding-bottom: $pc-section-padding;
+		@include mq-down() {
+			padding-top: $sp-section-padding;
+			padding-bottom: $sp-section-padding;
+		}
+	}
+}
+
+// 汎用パーツのmarinを統一したい時
+@mixin general-mb($isFist: 0) {
+	margin-bottom: map-get(v.$spacers, $isFist);
+	@include mq-down() {
+		margin-bottom: map-get(v.$sp-spacers, $isFist);
+	}
+}
+
+@mixin general-mt($isFist: 0) {
+	margin-top: map-get(v.$spacers, $isFist);
+	@include mq-down() {
+		margin-top: map-get(v.$sp-spacers, $isFist);
+	}
+}

@@ -1,0 +1,22 @@
+
+/* font
+----------------------------------------*/
+
+$font-family-primary: 'Noto Sans JP', YuGothic, "Yu Gothic medium", "Hiragino Sans", Meiryo, "sans-serif";
+$font-family-english: 'Roboto', sans-serif;
+
+// 10(base font size) / 16(Browser Default font size) = 0.625em * 100 = 62.5%
+$root-font-size: 62.5%;
+//$sp-root-font-size: 2.6667vw;
+$sp-root-font-size: 62.5%;
+$base-font-size: 1.6rem;
+$sp-base-font-size: 1.5rem;
+
+$base-line-height: 1.56;
+$h-line-height: 1.38;
+$en-line-height: 1.2;
+$wide-line-height: 2;
+
+$base-letter-space: 0.05em;
+$wide-letter-space: 0.1em;
+$indent-sub-list: 2em;
