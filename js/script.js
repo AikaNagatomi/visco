@@ -41,7 +41,7 @@ window.onerror = TigilError;
         }
 
         // #で始まるアンカーをクリックした場合に処理
-        $('a[href^="#"]').on(eventType, function (e) {
+        $('a[href^="#"]').not('.parent').on(eventType, function (e) {
           let href = $(this).attr("href");
           e.preventDefault();
           let target = $(href === "#" || href === "" ? "body" : href);
@@ -86,7 +86,7 @@ window.onerror = TigilError;
           // 移動先を数値で取得
           let position = 0;
           if ($WindowWidth >= BREAK_POINT_SM) {
-            o.headerfix = ".c-gnav";
+            o.headerfix = ".l-header";
           }
           if (o.headerfix !== "") {
             let navHeight = $(o.headerfix).outerHeight();
@@ -140,18 +140,9 @@ window.onerror = TigilError;
         smoothscroll();
 
         $(".l-header__btn").on(eventType, function () {
-            $("body,.l-header").toggleClass("overlay");
+            /*$("body,.l-header").toggleClass("overlay");*/
             $(".l-header__btn").toggleClass("nav-open");
             $(".l-header__navi").toggleClass("nav-open");
-        });
-
-        //tab
-        $('.c-tab__menu').find('a').on('click', function() {
-          $('.c-tab__menu').find('li').removeClass('current');
-          $(this).parent('li').addClass('current');
-          $('.c-tab__box').hide();
-          $($(this).attr('href')).show();
-          return false;
         });
         
 
@@ -198,27 +189,27 @@ window.onerror = TigilError;
         });
 
         // 要素外をクリックで非表示
-        $('.l-header').on('click', (e) => {
-          if(!e.target.closest('.l-header__btn,.l-header__navi-list-link')) {
-            const flWrapper = document.querySelector('.l-header__btn')
-            $("body,.l-header").toggleClass("overlay");
-            $(".l-header__btn").toggleClass("nav-open");
-            $(".l-header__navi").toggleClass("nav-open");
-          } else {
-          }
-        })
+        // $('.l-header').on('click', (e) => {
+        //   if(!e.target.closest('.l-header__btn,.l-header__navi-list-link')) {
+        //     const flWrapper = document.querySelector('.l-header__btn')
+        //     $("body,.l-header").toggleClass("overlay");
+        //     $(".l-header__btn").toggleClass("nav-open");
+        //     $(".l-header__navi").toggleClass("nav-open");
+        //   } else {
+        //   }
+        // })
 
     });
 
-    let gnavTop = $(".c-gnav").offset().top;
-    let gnavHeight = $(".c-gnav").outerHeight();
+    let gnavTop = $(".l-header").offset().top;
+    let gnavHeight = $(".l-header").outerHeight();
 
     $(window).on("load scroll", function () {
          // header menu
-        if ( gnavTop <= $(window).scrollTop() ) {
-            $(".c-gnav").attr("data-fixed", true);
+        if ( $(window).scrollTop() > 250 ) {
+            $(".l-header").attr("data-fixed", true);
         } else {
-            $(".c-gnav").attr("data-fixed", false);
+            $(".l-header").attr("data-fixed", false);
         }
         // inview
         $("[data-a-inview]").each(function () {
@@ -227,16 +218,76 @@ window.onerror = TigilError;
             } else {
                 $(this).attr("data-inview", false);
             }
-            if ( $(this).offset().top <= $(window).scrollTop() + window.innerHeight &&  $(this).offset().top + $(this).height() > $(window).scrollTop() + window.innerHeight ) {
-                if ( gnavTop <= $(window).scrollTop() ) {
-                    $(this).find(".p-home__buy").attr("data-inview", true);
-                } else {
-                    $(this).find(".p-home__buy").attr("data-inview", false);
-                }
-            } else {
-                $(this).find(".p-home__buy").attr("data-inview", false);
-            }
         });
     });
 
 }.call(this));
+
+//タブ（絞り込み）
+$(function () {
+  let $filter = $('.c-tab [data-filter]'),
+      $item = $('.c-tab__box [data-item]');
+      
+  // カテゴリをクリックしたら
+  $filter.click(function (e) {
+      // デフォルトの動作をキャンセル
+      e.preventDefault();
+      let $this = $(this);
+      
+      // クリックしたカテゴリにクラスを付与
+      $filter.removeClass('is-active');
+      $this.addClass('is-active');
+      
+      // クリックした要素のdata属性を取得
+      let $filterItem = $this.attr('data-filter');
+      
+      // データ属性が all なら全ての要素を表示
+      if ($filterItem == 'all') {
+      $item.removeClass('is-active').fadeOut().promise().done(function () {
+          $item.addClass('is-active').fadeIn();
+      });
+      // all 以外の場合は、クリックした要素のdata属性の値を同じ値のアイテムを表示
+      } else {
+      $item.removeClass('is-active').fadeOut().promise().done(function () {
+          $item.filter('[data-item = "' + $filterItem + '"]').addClass('is-active').fadeIn();
+      });
+      }
+  });
+});
+
+//スライド（slick）
+$(function () {
+  $(".c-slide__img")
+    .on("init", function (event, slick) {
+      $(this).append('<div class="slick-num"><span class="now-count"></span> / <span class="all-count"></span></div>');
+      $(".now-count").text(slick.currentSlide + 1); // 現在のスライド番号(+1が無いと0からスタートしてしまう)
+      $(".all-count").text(slick.slideCount); // スライドの総数
+    })
+    .slick({
+      // 通常のスライダー同様、オプションを記入
+      arrows: true, 
+      asNavFor: '.c-slide__thumbnail' 
+    })
+    .on("beforeChange", function (event, slick, currentSlide, nextSlide) {
+      $(".now-count").text(nextSlide + 1); // 現在のスライド番号の次のスライドになったら番号を+1
+    });
+
+    $('.c-slide__thumbnail').slick({
+      asNavFor:'.c-slide__img', 
+      focusOnSelect: true, 
+      slidesToShow: 9, 
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            infinite: false,
+            slidesToShow: 4,
+            swipeToSlide: true,
+            arrows: false
+          },
+        },
+      ],
+    }); 
+});
+

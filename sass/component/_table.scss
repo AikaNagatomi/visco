@@ -1,0 +1,45 @@
+/* コンポーネント
+c-tab
+----------------------------------------*/
+@use "../global" as g;
+
+.c-table {
+    margin-bottom: 8.5rem;
+    color: g.$white;
+
+    @include g.mq-down() {
+        margin-bottom: 4.5rem;
+    }
+
+	tr {
+        th {
+            font-size: 1.6rem;
+            font-weight: 500;
+            border-bottom: 1px solid g.$white;
+            text-align: left;
+            padding: 2rem 0 .6rem;
+
+            @include g.mq-down() {
+                font-size: 1.4rem;
+                padding: 1.3rem .6rem 0.6rem 0;
+                min-width: 6.3rem;
+            }
+        }
+    
+        td {
+            font-size: 1.4rem;
+            font-weight: 400;
+            padding: 2rem 0 .6rem 8.5rem;
+
+            @include g.mq-down() {
+                padding: 1.3rem 0 .6rem 3.15rem;
+            }
+        }
+
+        &:first-child {
+            th,td {
+                padding-top: 0;
+            }
+        }
+    }
+}

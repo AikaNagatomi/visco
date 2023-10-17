@@ -1,0 +1,158 @@
+/* コンポーネント
+c-slide
+----------------------------------------*/
+@use "../global" as g;
+
+.c-slide {
+	overflow: hidden;
+	margin-bottom: 3.3rem;
+
+	@include g.mq-down() {
+		margin-bottom: 3rem;
+	}
+
+	&__img {
+		margin-bottom: 2.3rem;
+
+		@include g.mq-down() {
+			margin-bottom: 1rem;
+		}
+
+		&-item {
+			img {
+				width: 100%;
+			}
+		}
+
+		.slick-num {
+			position: absolute;
+			right: 2rem;
+			bottom: 2rem;
+			color: g.$white;
+			font-family: g.$font-family-english;
+			font-size: 2.4rem;
+			line-height: 1;
+
+			@include g.mq-down() {
+				right: 1rem;
+				bottom: 1rem;
+				font-size: 1.5rem;
+			}
+
+			.now-count {
+				font-size: 3.6rem;
+
+				@include g.mq-down() {
+					font-size: 2.2rem;
+				}
+			}
+		}
+
+		.slick-prev {
+			width: 8.5%;
+			height: 13%;
+			left: 1rem;
+			top: 50%;
+			transform: translateY(-50%) scale(-1,-1);
+			z-index: 1;
+
+			@include g.mq-down() {
+				width: 12.4%;
+  				height: 20%;
+				left: .5rem;
+			}
+
+			&::before {
+				content: "";
+				position: absolute;
+				width: 100%;
+  				height: 100%;
+				background: url(../img/common/ico-arrow-slide.svg) no-repeat;
+				background-size: 100% 100%;
+				top: 0;
+				left: 0;
+				opacity: 1;
+			}
+		}
+
+		.slick-next {
+			width: 8.5%;
+			height: 13%;
+			right: 1rem;
+			top: 50%;
+			transform: translateY(-50%);
+
+			@include g.mq-down() {
+				width: 12.4%;
+  				height: 20%;
+				right: .5rem;
+			}
+
+			&::before {
+				content: "";
+				position: absolute;
+				width: 100%;
+  				height: 100%;
+				background: url(../img/common/ico-arrow-slide.svg) no-repeat;
+				background-size: 100% 100%;
+				top: 0;
+				left: 0;
+				opacity: 1;
+			}
+		}
+	}
+
+	&__thumbnail {
+		.slick-track {
+			display: flex;
+		}
+
+		@include g.mq-down {
+			// .slick-list {
+			// 	overflow-x: scroll;
+			// 	padding-bottom: 1.3rem;
+			// 	scrollbar-width: thin;
+			// 	scrollbar-color: #3B4043 #fff;
+	
+			// 	&::-webkit-scrollbar-thumb {
+			// 		background: #3B4043;
+			// 	} 
+
+			// 	&::-webkit-scrollbar {
+			// 		width: 6.2rem;
+			// 		height: 0.2rem;
+			// 	}
+
+			// 	&::-webkit-scrollbar-track {
+			// 		background: #F0F3F5;
+			// 	}
+			// }
+		}
+
+		
+		
+		&-item {
+			width: 9% !important;
+			max-width: 9rem;
+			margin-right: 2.3%;
+
+			@include g.mq-down {
+				width: 10% !important;
+				max-width: inherit;
+				margin: 0 .6%;
+			}
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+}

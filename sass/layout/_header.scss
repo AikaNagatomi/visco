@@ -13,12 +13,73 @@ l-header
 	padding-right: 3rem;
 	padding-left: 3rem;
 	z-index: 10;
-	height: 8rem;
+	height: 9.6rem;
 	transition: 0.3s;
 
 	@include g.mq-down(xl) {
 		padding: 1.7rem 2rem;
+		height: 7rem;
 	}
+
+	@include g.mq-up(xl) {
+		&[data-fixed=true] {
+			background: g.$bg-secondary-color;
+	
+			.l-header__navi-list{
+				&-link {
+					color: g.$black;
+					z-index: 1;
+				}
+	
+				&-child {
+					background: g.$bg-secondary-color;
+				}
+	
+				&-item{
+					&.contact {
+						.l-header__navi-list-link {
+							background: g.$black;
+							color: g.$white;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include g.mq-down(xl) {
+		&[data-fixed=true] {
+			background: g.$bg-secondary-color;
+
+			.l-header__btn {
+				&::before {
+					color: g.$black;
+				}
+				
+				.line {
+					&::before,
+					&::after {
+						background: g.$black;
+					}
+				}
+
+				&.nav-open {
+					&::before {
+						color: g.$white;
+					}
+		
+					.line {
+						&::before,
+						&::after {
+							background: g.$white;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	
 
 	// &.hovered {
 	// 	background: g.$white;
@@ -28,7 +89,7 @@ l-header
 		width: 11rem;
 		padding-right: 0;
 		padding-left: 0;
-		padding-top: 2.7rem;
+		padding-top: .7rem;
 		padding-bottom: .7rem;
 
 		a {
@@ -54,7 +115,7 @@ l-header
 			width: 4.6rem;
 			height: 3.6rem;
 			position: fixed;
-			top: 2rem;
+			top: 1.5rem;
 			right: 2rem;
 			color: g.$white;
 			z-index: 101;
@@ -135,7 +196,7 @@ l-header
 			top: 0;
 			right: -100vw;
 			overflow-y: auto;
-			background: g.$bg-secondary-color;
+			background: rgba(0,0,0,.9);
 			z-index: 100;
 			box-sizing: border-box;
 			overflow-x: hidden;
@@ -170,6 +231,8 @@ l-header
 						.l-header__navi-list-child {
 							display: grid;
 							column-gap: 6.8rem;
+							opacity: 1;
+							pointer-events: auto;
 						}
 					}
 				}
@@ -223,7 +286,9 @@ l-header
 
 			//入れ子
 			&-child {
-				display: none;
+				opacity: 0;
+				pointer-events: none;
+				transition: 0.3s;
 				position: absolute;
 				top: 0;
 				font-size: 1.6rem;
@@ -232,6 +297,10 @@ l-header
 				width: 4.7rem;
 
 				@include g.mq-down(xl) {
+					display: none;
+					opacity: 1;
+					pointer-events: all;
+					transition: inherit;
 					position: relative;
 					top: 0;
 					background: none;
@@ -241,14 +310,13 @@ l-header
 				}
 
 				&-item {
-					margin-bottom: 1rem;
-
 					@include g.mq-down(xl) {
 						display: block;
 					}
 
 					.l-header__navi-list-link {
 						height: auto;
+						padding: .5rem 0;
 
 						@include g.mq-down(xl) {
 							font-size: 1.4rem;
@@ -263,11 +331,11 @@ l-header
 	}
 	
 
-	@include g.mq-down(xl) {
-		&.overlay {
-			&::before {
-				display: none;
-			}
-		}
-	}
+	// @include g.mq-down(xl) {
+	// 	&.overlay {
+	// 		&::before {
+	// 			display: none;
+	// 		}
+	// 	}
+	// }
 }
