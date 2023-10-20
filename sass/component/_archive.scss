@@ -1,0 +1,31 @@
+/* コンポーネント
+c-archive
+----------------------------------------*/
+@use "../global" as g;
+
+.c-archive {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid g.$white;
+
+    @include g.mq-down() {
+        margin-bottom: 2.5rem;
+    }
+
+    &__list {
+        li {
+            margin-bottom: .65rem;
+
+            a {
+                color: #D5D5D5;
+                text-decoration: underline;
+                font-size: 1.4rem;
+
+                &:hover {
+                    text-decoration: none;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

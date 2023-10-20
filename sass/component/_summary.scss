@@ -1,0 +1,54 @@
+/* コンポーネント
+c-summary
+----------------------------------------*/
+@use "../global" as g;
+
+.c-summary {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+
+    @include g.mq-down() {
+        display: block;
+        margin-bottom: 2.5rem;
+    }
+
+    &__item {
+        width: 46.3%;
+        max-width: 46.3rem;
+        margin-bottom: 7rem;
+
+        @include g.mq-down() {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 5rem;
+        }
+
+        a {
+            display: block;
+        }
+
+        figure {
+            margin-bottom: 1.5rem;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin-bottom: .9rem;
+
+            .date {
+                display: block;
+                font-family: g.$font-family-english;
+                margin-bottom: .5rem;
+            }
+        }
+        p {
+            font-size: 1.4rem;
+        }
+    }
+}

@@ -1,0 +1,131 @@
+@use "../global" as g;
+
+.p-blog {
+    &__section {
+      margin-bottom: 8rem;
+
+      @include g.mq-down() {
+        margin-bottom: 5rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 .9rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid;
+      }
+  
+      h3 {
+        font-size: 1.6rem;
+        margin: 2rem 0 0.9rem;
+        padding-left: 1rem;
+        border-left: 3px solid;
+      }
+  
+      h4 {
+        font-size: 1.6rem;
+        margin: 2rem 0 0.9rem;
+        padding-left: 2rem;
+  
+        &::before {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 1.5rem;
+          height: 1.5rem;
+          background: g.$white;
+          left: 0;
+          top: .5rem;
+          border-radius: 50%;
+        }
+      }
+
+      p {
+        font-size: 1.4rem;
+        line-height: 2;
+        margin-bottom: 2.5rem;
+  
+        &.p-blog__category {
+          margin-bottom: -1.5rem;
+          margin-left: 2rem;
+          z-index: 1;
+    
+          span {
+            background: g.$secondary-color;
+            font-family: g.$font-family-english;
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding: 0.5rem 2.2rem;
+            display: inline-block;
+  
+            @include g.mq-down() {
+              font-size: 1.2rem;
+              padding: 0.5rem 2rem;
+            }
+          }
+        }
+      }
+  
+      figure {
+        margin-bottom: 2.5rem;
+      }
+  
+
+      .b {
+        &-bg-box {
+          background: rgba(105, 82, 56,0.6);
+          padding: 2rem;
+          margin-bottom: 3rem;
+    
+          > * {
+            margin-bottom: 0;
+          }
+        }
+
+        &-ol-list {
+          list-style: decimal;
+          padding-left: 2.7rem;
+          margin: 2.4rem 0;
+
+          li {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            letter-spacing: 0.1em;
+          }
+        }
+
+        &-ul-list {
+          list-style: disc;
+          padding-left: 2rem;
+          margin: 2.4rem 0;
+
+          li {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            letter-spacing: 0.1em;
+          }
+        } 
+
+        &-text-link {
+          text-decoration: underline;
+        }
+      }
+
+    }
+
+
+    &__ttl {
+      font-size: 1.6rem;
+      margin-bottom: .9rem;
+      padding-bottom: 0 !important;
+      border-bottom: none !important;
+
+      .date {
+          display: block;
+          font-family: g.$font-family-english;
+          margin-bottom: .8rem;
+      }
+    }
+
+    
+}
