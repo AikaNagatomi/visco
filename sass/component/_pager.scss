@@ -95,5 +95,84 @@ c-pager
         }
 
     }
+
+    &__simple {
+        display: flex;
+        justify-content: center;
+
+        @include g.mq-down(lg) {
+            justify-content: space-between;
+        }
+
+        &-prev,
+        &-next {
+            margin: 0 5rem;
+
+            @include g.mq-down(lg) {
+                margin: 0;
+                width: 43.4%;
+                max-width: 15rem;
+            }
+
+            a {
+                display: block;
+                width: 9.2rem;
+                font-size: 1.6rem;
+                font-weight: bold;
+                border-bottom: 2px solid g.$white;
+                padding-bottom: 0.3rem;
+                margin: 0 auto;
+
+                @include g.mq-down(lg) {
+                    margin: 0;
+                }
+    
+                &::before {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    background: url(../img/common/ico-arrow02.svg) no-repeat;
+                    background-size: 100% 100%;
+                    width: 4.2rem;
+                    height: 4.2rem;
+                    bottom: -0.8rem;
+                    right: -5.95rem;
+
+                    @include g.mq-down(lg) {
+                        right: -62%;
+                        width: 45%;
+                    }
+                    @include g.mq-down(sm) {
+                        right: -43%;
+                        width: 40%;
+                    }
+                }
+            }
+        }
+
+        &-prev {
+            a {
+                text-align: right;
+
+                @include g.mq-down(lg) {
+                    margin: 0 0 0 auto;
+                }
+
+                &::before {
+                    right: inherit;
+                    left: -5.95rem;
+                    transform: scale(-1,-1);
+
+                    @include g.mq-down(lg) {
+                        left: -62%;
+                    }
+
+                    @include g.mq-down(sm) {
+                        left: -43%;
+                    }
+                }
+            }
+        }
+    }
     
 }

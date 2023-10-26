@@ -25,7 +25,7 @@ c-form
 		}
 
 		dt {
-			width: 20.5rem;
+			width: 26rem;
 			padding-top: 1rem;
 
 			@include g.mq-down(lg) {
@@ -219,6 +219,16 @@ c-form
 			// 	}
 			// }
 		}
+	}
+
+	&__required {
+		font-size: 1.3rem;
+		font-weight: normal;
+		padding: 0.2rem .7rem;
+		color: g.$white;
+		background-color: #C65546;
+		border-radius: .3rem;
+		margin-left: 1rem;
 	}
 
 	&__input {

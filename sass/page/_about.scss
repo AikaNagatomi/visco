@@ -1,0 +1,41 @@
+@use "../global" as g;
+
+.p-about {
+  &__img {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8rem;
+
+    @include g.mq-down() {
+     display: block;  
+     margin-bottom: 4rem; 
+    }
+
+    &-item {
+      width: 32%;
+
+      @include g.mq-down() {
+        width: 100%;
+        margin-bottom: 2rem;
+       }
+    }
+  }
+
+  &__map {
+    margin-bottom: 2rem;
+
+    iframe {
+      width: 100%;
+
+      @include g.mq-down() {
+        height: 27rem;
+      }
+    }
+  }
+
+  .c-btn__contact {
+    margin-bottom: 0;
+  }
+
+    
+}

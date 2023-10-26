@@ -5,6 +5,8 @@ l-main
 
 .l-main {
   overflow: hidden;
+  color: g.$white;
+  
   // 汎用のセクション
   &__inner {
     @include g.section-width();
@@ -91,6 +93,59 @@ l-main
           font-size: 1.4rem;
           font-weight: normal;
           text-align: center;
+        }
+      }
+    }
+  }
+
+  &__two-column {
+    display: flex;
+    justify-content: space-between;
+
+    @include g.mq-down(lg) {
+      display: block;
+    }
+  }
+
+  &__contents {
+    width: 67.7%;
+
+    @include g.mq-down(lg) {
+      width: 100%;
+    }
+  }
+
+  &__side {
+    width: 23.5%;
+
+    @include g.mq-down(xl) {
+      width: 27.5%;
+    }
+    @include g.mq-down(lg) {
+      width: 89.8%;
+      margin: 5.6rem auto 0;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      border-bottom: .4rem solid g.$white;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+
+      .en {
+        font-size: 4rem;
+        letter-spacing: 0.025em;
+        line-height: 1;
+        margin-right: 3rem;
+
+        &::after {
+          content: "";
+          position: absolute;
+          background: #707070;
+          width: .1rem;
+          height: 3rem;
+          right: -1.5rem;
+          top: 1rem;
         }
       }
     }

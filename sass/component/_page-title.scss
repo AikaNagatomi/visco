@@ -11,7 +11,34 @@ c-page-title
 	padding: 11.4rem 0 7.5rem;
 
 	@include g.mq-down() {
+		background: url(../img/common/bg-ttl-sp.png) no-repeat;
+		background-position: center;
+		background-size: cover;
 		padding: 10rem 0 4rem;
+	}
+
+	&.blog {
+		background: url(../img/common/bg-ttl-blog.png) no-repeat;
+		background-position: center;
+		background-size: cover;
+	
+		@include g.mq-down() {
+			background: url(../img/common/bg-ttl-blog-sp.png) no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+	}
+
+	&.parts {
+		background: url(../img/common/bg-ttl-parts.png) no-repeat;
+		background-position: center;
+		background-size: cover;
+	
+		@include g.mq-down() {
+			background: url(../img/common/bg-ttl-parts-sp.png) no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
 	}
 
 	&::before {
@@ -39,3 +66,4 @@ c-page-title
 		}
 	}
 }
+
